@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            background-color: #F1EBE4; 
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(135deg, #786759, #4F4739);
+            color: #F0E7D4; 
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; 
+            width: 100%; 
+            z-index: 1000;
+        }
+        header .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            gap: 30px; 
+        }
+        nav a {
+            color: #F0E7D4; 
+            text-decoration: none;
+            font-size: 25px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 80px;
+        }
+        section {
+            padding: 40px 20px;
+            background-color: #DCD1C6;
+            border-radius: 10px;
+            margin: 20px;
+            position: relative; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+        .about-text {
+            flex: 1;
+            text-align: center;
+            min-width: 300px;
+            margin-top: 20px;
+        }
+        .about-text h2 {
+            margin-top: 0;
+        }
+        .about img {
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            display: block; 
+            margin: 20px auto 0;
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            text-align: center;
+            justify-content: center;
+        }
+        .project-tab {
+            background: #C5A68F; 
+            border: 1px solid #BAACA0; 
+            border-radius: 10px;
+            width: 300px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        .project-tab:hover {
+            transform: scale(1.05);
+        }
+        .project-tab img {
+            width: 80%;
+            max-width: 220px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .contact {
+            background: #DCD1C6;
+            text-align: center;
+        }
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 10px 0;
+        }
+        .contact-icons a {
+            color: #4F4739; 
+            font-size: 40px; 
+            transition: color 0.2s;
+        }
+        .contact-icons a:hover {
+            color: #786759; 
+        }
+        footer {
+            background: #4F4749; 
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+  
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1001; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.9); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%; 
+            max-width: 900px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 90%; 
+            object-fit: contain;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #F0E7D4; 
+            font-size: 40px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        
+        .about img.giphy {
+            position: absolute;
+            width: 120px;
+            height: auto;
+            top: 20px;
+            right: 20px;
+        }
+        .about img.giphy-left {
+            position: absolute;
+            width: 130px;
+            height: auto;
+            top: 20px;
+            left: 20px;
+        }
+        .about img.giphy-bottom-left {
+            position: absolute;
+            width: 120px;
+            height: auto;
+            bottom: 20px;
+            left: 20px;
+        }
+        .about img.giphy-bottom-right {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            bottom: 20px;
+            right: 20px;
+        }
+        .projects img.giphy {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: auto;
+        }
+        .projects img.giphy-left {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 180px;
+            height: auto;
+        }
+        .contact img.giphy,
+        .contact img.giphy-left {
+            position: absolute;
+            width: 125px;
+            height: auto;
+        }
+        .contact img.giphy {
+            bottom: 20px;
+            right: 20px;
+        }
+        .contact img.giphy-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header .logo {
+                font-size: 30px;
+            }
+            nav a {
+                font-size: 18px; 
+            }
+            section {
+                padding: 20px; 
+                margin: 10px; 
+            }
+            .about img {
+                max-width: 100%; 
+            }
+            .project-tab {
+                width: 100%; 
+                max-width: none; 
+            }
+            .contact-icons a {
+                font-size: 25px; 
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Earl's Portfolio</div>
+        <nav>
+            <a href="#about"><i class="fas fa-user"></i></a> 
+            <a href="#projects"><i class="fas fa-folder-open"></i></a> 
+            <a href="#contact"><i class="fas fa-envelope"></i></a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="about">
+            <div class="container">
+                <img src="erl.jpg" alt="Your Photo">
+                <img class="giphy-left" src="https://media.giphy.com/media/sUqu3lBvG1ZvHwWOmy/giphy.gif" alt="Left Giphy"> 
+                <img class="giphy" src="https://media.giphy.com/media/Vb0VIn9lYc0FxN7YW1/giphy.gif" alt="Right Giphy"> 
+                <img class="giphy-bottom-left" src="https://media.giphy.com/media/zylgz68wygSL6txAiD/giphy.gif" alt="Bottom Left Giphy"> 
+                <img class="giphy-bottom-right" src="https://media.giphy.com/media/jPsraWbk0eJHxp474l/giphy.gif" alt="Bottom Right Giphy"> 
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Welcome to my portfolio!</p> 
+                    <p>I'm Jan Earl Lorezca, an IT student with a passion for programming.</p> 
+                    <p>I am a college student, aspiring to be a Programmer one day.</p>
+                    <p>This portfolio is a glimpse into my journey and the projects I'm most proud of.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 style="text-align: center;">My Projects</h2> 
+                <br>
+                <div class="projects">
+                    <div class="project-tab" onclick="openModal('mot.png')">
+                        <img src="mmot.png" alt="Project 1">
+                        <h3>Milktea Order Taker</h3>
+                        <p>An application for taking milktea orders using forms.</p>
+                    </div>
+                    <div class="project-tab" onclick="openModal('ui1.png', 'ui2.png', 'ui3.png')">
+                        <img src="1stUI.png" alt="Project 2">
+                        <h3>My First UI</h3>
+                        <p>A website designed for educational purposes.</p>
+                    </div>
+                    <div class="project-tab" onclick="openModal('ccalc.png')">
+                        <img src="calc.png" alt="Project 3">
+                        <h3>C++ Calculator</h3>
+                        <p>A C++ program calculator that asks for 2 numbers and 1 operator.</p>
+                    </div>
+                    <div class="project-tab" onclick="openModal('llogin.png', 'ssrf.png', 'ddb.png')">
+                        
+                        <img src="2ndUI.png" alt="Project 4">
+                        <h3>My Second UI</h3>
+                        <p>A UI/UX project designed for our database activity.</p>
+                    </div>
+                    <div class="project-tab" onclick="openModal('cci1.png', 'cci2.png')">
+                        <img src="ci.png" alt="Project 5">
+                        <h3>Country Information Program</h3>
+                        <p>A program that provides 10 information about every country in the world.</p>
+                    </div>
+                    <img class="giphy-left" src="https://media.giphy.com/media/DTnBoZkPefC8hZsoOu/giphy.gif" alt="Left Giphy"> 
+                    <img class="giphy" src="https://media.giphy.com/media/9b0dPTdwIw7mJggFTA/giphy.gif" alt="Right Giphy"> 
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contacts:</h2>
+                <div class="contact-icons">
+                    <a href="https://www.facebook.com/janearl.lorezca" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/JLorezca30586" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/jan-earl-lorezca-892865349/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:lorezcajanearl@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <img class="giphy-left" src="https://media.giphy.com/media/QeS0gJLSgU1g64lSGu/giphy.gif" alt="Left Giphy"> 
+                <img class="giphy" src="https://media.giphy.com/media/3oeQdjkgpX03XVTqK9/giphy.gif" alt="Right Giphy">
+            </div>
+        </section>
+    </main>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Lorezca.</p>
+    </footer>
+
+    <script>
+        let currentImageIndex = 0;
+        let images = [];
+
+        function openModal(...imagePaths) {
+            images = imagePaths;
+            currentImageIndex = 0;
+            document.getElementById('modalImage').src = images[currentImageIndex];
+            document.getElementById('myModal').style.display = 'block';
+
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+            if (images.length <= 1) {
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+            } else {
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+            document.getElementById('modalImage').src = images[currentImageIndex];
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        window.addEventListener('keydown', function(event) {
+            if (document.getElementById('myModal').style.display === 'block') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1); 
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1); 
+                } else if (event.key === 'Escape') {
+                    closeModal(); 
+                }
+            }
+        });
+    </script>
+</body>
+</html>
