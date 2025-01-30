@@ -32,12 +32,12 @@
             z-index: 1000;
         }
         header .logo {
-            font-size: 40px;
+            font-size: 35px;
             font-weight: bold;
         }
         nav {
             display: flex;
-            gap: 30px; 
+            gap: 50px; 
         }
         nav a {
             color: #F0E7D4; 
@@ -51,18 +51,47 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            margin-top: 80px;
+            margin-top: 60px;
         }
         section {
-            padding: 40px 20px;
+            padding: 80px 80px 40px;
             background-color: #DCD1C6;
             border-radius: 10px;
-            margin: 20px;
+            margin: 35px;
             position: relative; 
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .home {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background-image: url('cat.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: 1;
+        }
+        .home h1 {
+            position: relative;
+            font-size: 50px;
+            font-weight: bold;
+            z-index: 2;
         }
         .about {
             display: flex;
@@ -203,28 +232,28 @@
         
         .about img.giphy {
             position: absolute;
-            width: 120px;
+            width: 130px;
             height: auto;
             top: 20px;
             right: 20px;
         }
         .about img.giphy-left {
             position: absolute;
-            width: 130px;
+            width: 140px;
             height: auto;
             top: 20px;
             left: 20px;
         }
         .about img.giphy-bottom-left {
             position: absolute;
-            width: 120px;
+            width: 130px;
             height: auto;
             bottom: 20px;
             left: 20px;
         }
         .about img.giphy-bottom-right {
             position: absolute;
-            width: 150px;
+            width: 170px;
             height: auto;
             bottom: 20px;
             right: 20px;
@@ -233,20 +262,20 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
-            width: 200px;
+            width: 210px;
             height: auto;
         }
         .projects img.giphy-left {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            width: 180px;
+            width: 190px;
             height: auto;
         }
         .contact img.giphy,
         .contact img.giphy-left {
             position: absolute;
-            width: 125px;
+            width: 160px;
             height: auto;
         }
         .contact img.giphy {
@@ -287,13 +316,18 @@
     <header>
         <div class="logo">Earl's Portfolio</div>
         <nav>
+            <a href="#home"><i class="fas fa-home"></i></a>
             <a href="#about"><i class="fas fa-user"></i></a> 
             <a href="#projects"><i class="fas fa-folder-open"></i></a> 
-            <a href="#contact"><i class="fas fa-envelope"></i></a>
+            <a href="#contact"><i class="fas fa-phone"></i></a>
         </nav>
     </header>
 
     <main>
+        <section id="home" class="home">
+            <h1>WELCOME TO MY PORTFOLIO!</h1>
+        </section>
+        
         <section id="about" class="about">
             <div class="container">
                 <img src="erl.jpg" alt="Your Photo">
