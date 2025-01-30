@@ -95,12 +95,14 @@
             font-weight: bold;
             z-index: 2;
         }
-        .about {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 20px;
-            position: relative;
+        .giphy {
+            width: 220px; 
+            height: auto;
+            position: absolute;
+            top: 130px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: 2;
         }
         .about-text {
             flex: 1;
@@ -232,7 +234,7 @@
             color: black;
         }
         
-        .about img.giphy {
+        .about img.giphy-right {
             position: absolute;
             width: 130px;
             height: auto;
@@ -260,7 +262,7 @@
             bottom: 20px;
             right: 20px;
         }
-        .projects img.giphy {
+        .projects img.giphy-right {
             position: absolute;
             bottom: 20px;
             right: 20px;
@@ -274,13 +276,13 @@
             width: 190px;
             height: auto;
         }
-        .contact img.giphy,
+        .contact img.giphy-right,
         .contact img.giphy-left {
             position: absolute;
             width: 160px;
             height: auto;
         }
-        .contact img.giphy {
+        .contact img.giphy-right {
             bottom: 20px;
             right: 20px;
         }
@@ -327,6 +329,7 @@
 
     <main>
         <section id="home" class="home">
+            <img class="giphy" src="https://media.giphy.com/media/9oa3sE4IdWbqO61WGT/giphy.gif" alt="Giphy">
             <h1>WELCOME TO MY PORTFOLIO!</h1>
         </section>
         
@@ -334,12 +337,11 @@
             <div class="container">
                 <img src="erl.jpg" alt="Your Photo">
                 <img class="giphy-left" src="https://media.giphy.com/media/sUqu3lBvG1ZvHwWOmy/giphy.gif" alt="Left Giphy"> 
-                <img class="giphy" src="https://media.giphy.com/media/Vb0VIn9lYc0FxN7YW1/giphy.gif" alt="Right Giphy"> 
+                <img class="giphy-right" src="https://media.giphy.com/media/Vb0VIn9lYc0FxN7YW1/giphy.gif" alt="Right Giphy"> 
                 <img class="giphy-bottom-left" src="https://media.giphy.com/media/zylgz68wygSL6txAiD/giphy.gif" alt="Bottom Left Giphy"> 
                 <img class="giphy-bottom-right" src="https://media.giphy.com/media/jPsraWbk0eJHxp474l/giphy.gif" alt="Bottom Right Giphy"> 
                 <div class="about-text">
                     <h2>About Me</h2>
-                    <p>Welcome to my portfolio!</p> 
                     <p>I'm Jan Earl Lorezca, an IT student with a passion for programming.</p> 
                     <p>I am a college student, aspiring to be a Programmer one day.</p>
                     <p>This portfolio is a glimpse into my journey and the projects I'm most proud of.</p>
@@ -379,7 +381,7 @@
                         <p>A program that provides 10 information about every country in the world.</p>
                     </div>
                     <img class="giphy-left" src="https://media.giphy.com/media/DTnBoZkPefC8hZsoOu/giphy.gif" alt="Left Giphy"> 
-                    <img class="giphy" src="https://media.giphy.com/media/9b0dPTdwIw7mJggFTA/giphy.gif" alt="Right Giphy"> 
+                    <img class="giphy-right" src="https://media.giphy.com/media/9b0dPTdwIw7mJggFTA/giphy.gif" alt="Right Giphy"> 
                 </div>
             </div>
         </section>
@@ -394,7 +396,7 @@
                     <a href="mailto:lorezcajanearl@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
                 <img class="giphy-left" src="https://media.giphy.com/media/QeS0gJLSgU1g64lSGu/giphy.gif" alt="Left Giphy"> 
-                <img class="giphy" src="https://media.giphy.com/media/3oeQdjkgpX03XVTqK9/giphy.gif" alt="Right Giphy">
+                <img class="giphy-right" src="https://media.giphy.com/media/3oeQdjkgpX03XVTqK9/giphy.gif" alt="Right Giphy">
             </div>
         </section>
     </main>
